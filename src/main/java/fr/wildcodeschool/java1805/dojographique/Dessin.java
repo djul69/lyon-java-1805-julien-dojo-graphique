@@ -13,14 +13,6 @@ public class Dessin extends JPanel {
 	public void ajouterObjet(VisageRond v) {
 		if (!listeDesVisageRonds.contains(v)) {
 			listeDesVisageRonds.add(v);
-			repaint();
-		}
-	}
-
-	public void pause(int duree) {
-		try {
-			Thread.sleep(duree);
-		} catch (Exception e) {
 		}
 	}
 
