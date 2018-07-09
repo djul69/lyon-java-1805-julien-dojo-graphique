@@ -2,8 +2,10 @@ package fr.wildcodeschool.java1805.dojographique;
 
 import java.awt.Graphics;
 
+import javafx.scene.canvas.GraphicsContext;
+
 public class Anarchy {
-	private AnarchyPanel d;
+	private int largeurTotale, hauteurTotale;
 
 	private int xhg = 0;
 	private int yhg = 0;
@@ -62,13 +64,13 @@ public class Anarchy {
 		yhg += dy;
 	}
 
-	public void deplacerAvecRebond() {
+	public void deplacerAvecRebond(long duration) {
 		if (bordGaucheAtteint() || bordDroitAtteint())
 			inverserDx();
 		if (bordHautAtteint() || bordBasAtteint())
 			inverserDy();
-		xhg += dx;
-		yhg += dy;
+		xhg += dx * (duration / 20_000_000);
+		yhg += dy * (duration / 20_000_000);
 	}
 
 	public boolean bordGaucheAtteint() {
@@ -76,7 +78,7 @@ public class Anarchy {
 	}
 
 	public boolean bordDroitAtteint() {
-		return ((xhg + largeur) > d.getWidth());
+		return ((xhg + largeur) > largeurTotale);
 	}
 
 	public boolean bordHautAtteint() {
@@ -84,11 +86,12 @@ public class Anarchy {
 	}
 
 	public boolean bordBasAtteint() {
-		return ((yhg + hauteur) >= d.getHeight());
+		return ((yhg + hauteur) >= hauteurTotale);
 	}
 
-	public void setDessin(AnarchyPanel d) {
-		this.d = d;
+	public void setTailleTotale(int largeurTotale, int hauteurTotale) {
+		this.largeurTotale = largeurTotale;
+		this.hauteurTotale = hauteurTotale;
 	}
 
 	public void dessiner(Graphics g) {
@@ -97,5 +100,13 @@ public class Anarchy {
 		g.drawLine(xhg + largeur / 2, yhg, xhg, yhg + hauteur);
 		g.drawLine(xhg + largeur / 2, yhg, xhg + largeur, yhg + hauteur);
 		g.drawLine(xhg, yhg + hauteur / 2, xhg + largeur, yhg + hauteur / 2);
+	}
+
+	public void dessiner(GraphicsContext gc) {
+		gc.strokeOval(xhg, yhg, largeur, hauteur);
+
+		gc.strokeLine(xhg + largeur / 2, yhg, xhg, yhg + hauteur);
+		gc.strokeLine(xhg + largeur / 2, yhg, xhg + largeur, yhg + hauteur);
+		gc.strokeLine(xhg, yhg + hauteur / 2, xhg + largeur, yhg + hauteur / 2);
 	}
 }

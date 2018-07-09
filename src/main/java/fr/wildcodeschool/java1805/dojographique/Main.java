@@ -15,17 +15,17 @@ public class Main {
 		win.setVisible(true);
 
 		final Anarchy v1 = new Anarchy();
-		v1.setDessin(d);
+		v1.setTailleTotale(d.getWidth(), d.getHeight());
 		d.add(v1);
 
 		final Anarchy v2 = new Anarchy(d.getWidth() / 2, d.getHeight() / 2, 40, 60);
 		v2.setDy(-5);
-		v2.setDessin(d);
+		v2.setTailleTotale(d.getWidth(), d.getHeight());
 		d.add(v2);
 
 		while (true) {
-			v1.deplacerAvecRebond();
-			v2.deplacerAvecRebond();
+			v1.deplacerAvecRebond(20_000_000);
+			v2.deplacerAvecRebond(20_000_000);
 
 			d.repaint();
 
