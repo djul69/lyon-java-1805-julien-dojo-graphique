@@ -2,8 +2,8 @@ package fr.wildcodeschool.java1805.dojographique;
 
 import java.awt.Graphics;
 
-public class VisageRond {
-	private Dessin d;
+public class Anarchy {
+	private AnarchyPanel d;
 
 	private int xhg = 0;
 	private int yhg = 0;
@@ -12,15 +12,15 @@ public class VisageRond {
 	private int dx = 5;
 	private int dy = 5;
 
-	public VisageRond() {
+	public Anarchy() {
 	}
 
-	public VisageRond(int xg, int yg) {
+	public Anarchy(int xg, int yg) {
 		xhg = xg;
 		yhg = yg;
 	}
 
-	public VisageRond(int xg, int yg, int larg, int haut) {
+	public Anarchy(int xg, int yg, int larg, int haut) {
 		xhg = xg;
 		yhg = yg;
 
@@ -87,17 +87,15 @@ public class VisageRond {
 		return ((yhg + hauteur) >= d.getHeight());
 	}
 
-	public void setDessin(Dessin d) {
+	public void setDessin(AnarchyPanel d) {
 		this.d = d;
 	}
 
 	public void dessiner(Graphics g) {
 		g.drawOval(xhg, yhg, largeur, hauteur);
-		g.drawLine(xhg + largeur / 4, yhg + (2 * hauteur) / 3, xhg + (3 * largeur) / 4, yhg + (2 * hauteur) / 3);
 
-		int largeurOeil = largeur / 5;
-		int hauteurOeil = hauteur / 5;
-		g.drawOval(xhg + largeurOeil, yhg + hauteurOeil, largeurOeil, hauteurOeil);
-		g.drawOval(xhg + 3 * largeurOeil, yhg + hauteurOeil, largeurOeil, hauteurOeil);
+		g.drawLine(xhg + largeur / 2, yhg, xhg, yhg + hauteur);
+		g.drawLine(xhg + largeur / 2, yhg, xhg + largeur, yhg + hauteur);
+		g.drawLine(xhg, yhg + hauteur / 2, xhg + largeur, yhg + hauteur / 2);
 	}
 }

@@ -10,19 +10,18 @@ public class Main {
 		final JFrame win = new JFrame("Anarchy");
 		win.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		win.setSize(512, 512);
-
-		Dessin d = new Dessin();
-		VisageRond v1 = new VisageRond();
-		v1.setDessin(d);
-		d.ajouterObjet(v1);
-
-		VisageRond v2 = new VisageRond(200, 200, 40, 60);
-		v2.setDy(-5);
-		v2.setDessin(d);
-		d.ajouterObjet(v2);
-
+		final AnarchyPanel d = new AnarchyPanel();
 		win.add(d);
 		win.setVisible(true);
+
+		final Anarchy v1 = new Anarchy();
+		v1.setDessin(d);
+		d.add(v1);
+
+		final Anarchy v2 = new Anarchy(d.getWidth() / 2, d.getHeight() / 2, 40, 60);
+		v2.setDy(-5);
+		v2.setDessin(d);
+		d.add(v2);
 
 		while (true) {
 			v1.deplacerAvecRebond();
