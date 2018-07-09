@@ -1,15 +1,15 @@
 package fr.wildcodeschool.java1805.dojographique;
 
 import static java.lang.Thread.sleep;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 public class Main {
-	public static void main(String[] args) throws InterruptedException {
-		JFrame laFenetre = new JFrame("VISAGES ANIMES");
-		laFenetre.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		laFenetre.setSize(512, 512);
+	public static void main(String... args) throws InterruptedException {
+		final JFrame win = new JFrame("Anarchy");
+		win.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		win.setSize(512, 512);
 
 		Dessin d = new Dessin();
 		VisageRond v1 = new VisageRond();
@@ -21,9 +21,8 @@ public class Main {
 		v2.setDessin(d);
 		d.ajouterObjet(v2);
 
-		laFenetre.add(d);
-
-		laFenetre.setVisible(true);
+		win.add(d);
+		win.setVisible(true);
 
 		while (true) {
 			v1.deplacerAvecRebond();

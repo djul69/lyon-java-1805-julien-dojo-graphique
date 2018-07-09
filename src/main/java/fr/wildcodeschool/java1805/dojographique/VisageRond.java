@@ -3,10 +3,8 @@ package fr.wildcodeschool.java1805.dojographique;
 import java.awt.Graphics;
 
 public class VisageRond {
-	public static final int LARGEUR_MIN = 15;
-	public static final int HAUTEUR_MIN = 15;
-
 	private Dessin d;
+
 	private int xhg = 0;
 	private int yhg = 0;
 	private int largeur = 50;
@@ -26,8 +24,8 @@ public class VisageRond {
 		xhg = xg;
 		yhg = yg;
 
-		largeur = Math.max(larg, LARGEUR_MIN);
-		hauteur = Math.max(haut, HAUTEUR_MIN);
+		largeur = larg;
+		hauteur = haut;
 	}
 
 	public int getDx() {
