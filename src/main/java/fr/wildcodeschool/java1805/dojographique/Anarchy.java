@@ -1,7 +1,5 @@
 package fr.wildcodeschool.java1805.dojographique;
 
-import java.awt.Graphics;
-
 import javafx.scene.canvas.GraphicsContext;
 
 public class Anarchy {
@@ -59,16 +57,13 @@ public class Anarchy {
 		dy = -dy;
 	}
 
-	public void deplacer() {
-		xhg += dx;
-		yhg += dy;
-	}
-
-	public void deplacerAvecRebond(long duration) {
-		if (bordGaucheAtteint() || bordDroitAtteint())
+	public void move(long duration) {
+		if (bordGaucheAtteint() || bordDroitAtteint()) {
 			inverserDx();
-		if (bordHautAtteint() || bordBasAtteint())
+		}
+		if (bordHautAtteint() || bordBasAtteint()) {
 			inverserDy();
+		}
 		xhg += dx * (duration / 20_000_000);
 		yhg += dy * (duration / 20_000_000);
 	}
@@ -94,15 +89,7 @@ public class Anarchy {
 		this.hauteurTotale = hauteurTotale;
 	}
 
-	public void dessiner(Graphics g) {
-		g.drawOval(xhg, yhg, largeur, hauteur);
-
-		g.drawLine(xhg + largeur / 2, yhg, xhg, yhg + hauteur);
-		g.drawLine(xhg + largeur / 2, yhg, xhg + largeur, yhg + hauteur);
-		g.drawLine(xhg, yhg + hauteur / 2, xhg + largeur, yhg + hauteur / 2);
-	}
-
-	public void dessiner(GraphicsContext gc) {
+	public void draw(GraphicsContext gc) {
 		gc.strokeOval(xhg, yhg, largeur, hauteur);
 
 		gc.strokeLine(xhg + largeur / 2, yhg, xhg, yhg + hauteur);

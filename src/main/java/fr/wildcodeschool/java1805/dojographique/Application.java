@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 public class Application extends javafx.application.Application {
 	public @Override void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Anarchy!");
-
 		final Canvas canvas = new Canvas(512, 512);
 
 		final Anarchy v1 = new Anarchy();
@@ -22,7 +21,7 @@ public class Application extends javafx.application.Application {
 		v2.setDy(-5);
 		v2.setTailleTotale((int) canvas.getWidth(), (int) canvas.getHeight());
 
-		Stream.of(v1, v2).forEach(a -> a.dessiner(canvas.getGraphicsContext2D()));
+		Stream.of(v1, v2).forEach(a -> a.draw(canvas.getGraphicsContext2D()));
 
 		primaryStage.setScene(new Scene(new Group(canvas)));
 		primaryStage.show();
@@ -36,8 +35,8 @@ public class Application extends javafx.application.Application {
 						canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
 						Stream.of(v1, v2).forEach(a -> {
-							a.deplacerAvecRebond(now - before);
-							a.dessiner(canvas.getGraphicsContext2D());
+							a.move(now - before);
+							a.draw(canvas.getGraphicsContext2D());
 						});
 					});
 					beforeOpt = Optional.of(now);
