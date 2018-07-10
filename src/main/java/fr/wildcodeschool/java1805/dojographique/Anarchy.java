@@ -3,97 +3,28 @@ package fr.wildcodeschool.java1805.dojographique;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Anarchy implements GraphicElement {
-	private int largeurTotale, hauteurTotale;
-
-	private int xhg = 0;
-	private int yhg = 0;
-	private int largeur = 50;
-	private int hauteur = 50;
-	private int dx = 5;
-	private int dy = 5;
+	private final int x, y, width, height;
 
 	public Anarchy() {
+		this(0, 0);
 	}
 
-	public Anarchy(int xg, int yg) {
-		xhg = xg;
-		yhg = yg;
+	public Anarchy(int x, int y) {
+		this(x, y, 50, 50);
 	}
 
-	public Anarchy(int xg, int yg, int larg, int haut) {
-		xhg = xg;
-		yhg = yg;
-
-		largeur = larg;
-		hauteur = haut;
-	}
-
-	public int getDx() {
-		return dx;
-	}
-
-	public void setDx(int v) {
-		this.dx = v;
-	}
-
-	public int getDy() {
-		return dy;
-	}
-
-	public void setDy(int v) {
-		this.dy = v;
-	}
-
-	public void inverserDx() {
-		dx = -dx;
-	}
-
-	public void inverserDy() {
-		dy = -dy;
-	}
-
-	public void inverserDxEtDy() {
-		dx = -dx;
-		dy = -dy;
-	}
-
-	public void move(long duration) {
-		if (bordGaucheAtteint() || bordDroitAtteint()) {
-			inverserDx();
-		}
-		if (bordHautAtteint() || bordBasAtteint()) {
-			inverserDy();
-		}
-		xhg += dx * (duration / 20_000_000);
-		yhg += dy * (duration / 20_000_000);
-	}
-
-	public boolean bordGaucheAtteint() {
-		return (xhg < 0);
-	}
-
-	public boolean bordDroitAtteint() {
-		return ((xhg + largeur) > largeurTotale);
-	}
-
-	public boolean bordHautAtteint() {
-		return (yhg < 0);
-	}
-
-	public boolean bordBasAtteint() {
-		return ((yhg + hauteur) >= hauteurTotale);
-	}
-
-	public void setTailleTotale(int largeurTotale, int hauteurTotale) {
-		this.largeurTotale = largeurTotale;
-		this.hauteurTotale = hauteurTotale;
+	public Anarchy(int x, int y, int width, int height) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
 	}
 
 	public @Override void draw(GraphicsContext gc) {
-		gc.strokeOval(xhg, yhg, largeur, hauteur);
+		gc.strokeOval(x, y, width, height);
 
-		gc.strokeLine(xhg + largeur / 2, yhg, xhg, yhg + hauteur);
-		gc.strokeLine(xhg + largeur / 2, yhg, xhg + largeur, yhg + hauteur);
-		gc.strokeLine(xhg, yhg + hauteur / 2, xhg + largeur, yhg + hauteur / 2);
+		gc.strokeLine(x + width / 2, y, x, y + height);
+		gc.strokeLine(x + width / 2, y, x + width, y + height);
+		gc.strokeLine(x, y + height / 2, x + width, y + height / 2);
 	}
 }
