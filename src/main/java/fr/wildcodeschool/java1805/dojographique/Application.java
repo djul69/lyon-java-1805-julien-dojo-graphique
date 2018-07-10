@@ -10,7 +10,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 
 public class Application extends javafx.application.Application {
-	public @Override void start(Stage primaryStage) throws Exception {
+	public @Override void start(Stage primaryStage) {
 		primaryStage.setTitle("Anarchy!");
 		final Canvas canvas = new Canvas(512, 512);
 

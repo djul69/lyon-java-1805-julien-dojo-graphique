@@ -2,7 +2,7 @@ package fr.wildcodeschool.java1805.dojographique;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class Anarchy {
+public class Anarchy implements GraphicElement {
 	private int largeurTotale, hauteurTotale;
 
 	private int xhg = 0;
@@ -89,7 +89,7 @@ public class Anarchy {
 		this.hauteurTotale = hauteurTotale;
 	}
 
-	public void draw(GraphicsContext gc) {
+	public @Override void draw(GraphicsContext gc) {
 		gc.strokeOval(xhg, yhg, largeur, hauteur);
 
 		gc.strokeLine(xhg + largeur / 2, yhg, xhg, yhg + hauteur);
