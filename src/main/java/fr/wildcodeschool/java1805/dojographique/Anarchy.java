@@ -1,6 +1,7 @@
 package fr.wildcodeschool.java1805.dojographique;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Anarchy implements GraphicElement {
 	private final int x, y, width, height;
@@ -21,6 +22,8 @@ public class Anarchy implements GraphicElement {
 	}
 
 	public @Override void draw(GraphicsContext gc) {
+		gc.setFill(Color.BLACK);
+
 		gc.strokeOval(x, y, width, height);
 
 		gc.strokeLine(x + width / 2, y, x, y + height);
