@@ -4,4 +4,5 @@ import javafx.scene.canvas.GraphicsContext;
 
 public interface GraphicElement {
 	void draw(GraphicsContext gc);
+	
 }

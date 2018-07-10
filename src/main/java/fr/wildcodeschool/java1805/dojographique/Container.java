@@ -13,6 +13,8 @@ public class Container implements GraphicElement {
 	}
 
 	public @Override void draw(GraphicsContext gc) {
-		// TODO
+		for(GraphicElement element:elements){
+			element.draw(gc);
+		}
 	}
 }
