@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 
+// NE PAS TOUCHER À CETTE CLASSE SOUS PEINE DE PUNITION
 public class Application extends javafx.application.Application {
 	public @Override void start(Stage primaryStage) {
 		primaryStage.setTitle("Anarchy!");

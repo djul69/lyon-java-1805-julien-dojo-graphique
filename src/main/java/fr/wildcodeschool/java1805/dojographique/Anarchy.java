@@ -7,11 +7,7 @@ public class Anarchy implements GraphicElement {
 	private final int x, y, width, height;
 
 	public Anarchy() {
-		this(0, 0);
-	}
-
-	public Anarchy(int x, int y) {
-		this(x, y, 50, 50);
+		this(0, 0, 50, 50);
 	}
 
 	public Anarchy(int x, int y, int width, int height) {
